@@ -17,10 +17,17 @@ jobs:
           username: ${{ secrets.DO_USER }}
           key: ${{ secrets.DO_SSH_KEY }}
           script: |
-            cd 'CI-CD'
-
+            export NVM_DIR="$HOME/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+          
+            nvm install 20
+            nvm use 20
+          
+            echo "Using Node version:"
+            node -v
+          
+            cd api-gateway
+          
             git pull origin main
-
             npm install
-
             pm2 restart api-gateway
