@@ -17,7 +17,7 @@ jobs:
           username: ${{ secrets.DO_USER }}
           key: ${{ secrets.DO_SSH_KEY }}
           script: |
-            cd api-gateway
+            cd 'CI-CD'
 
             git pull origin main
 
